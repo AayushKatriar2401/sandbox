@@ -1,11 +1,42 @@
-def is_valid_password(text):
-    return 8 <= len(text) <= 20
+"""
+Name: Aayush Katriar
+
+Adding a Password Checker Function
+"""
+
+MINIMUM_LENGTH = 4
+
+
+def version_1():
+    """Get a password of valid size and print asterisks."""
+    password = input("Enter password of at least {} characters: ".format(MINIMUM_LENGTH))
+    while len(password) < MINIMUM_LENGTH:
+        password = input("Enter password of at least {} characters: ".format(MINIMUM_LENGTH))
+
+    print('*' * len(password))
+
+
+# version_1()
 
 
 def main():
-    new_password = "hello world"
-    print(f"{new_password} is a valid password? {is_valid_password(new_password)}")
+    """Get and print password using functions."""
+    password = get_password(MINIMUM_LENGTH)
+    print_asterisks(password)
 
 
-if __name__ == '__main__':
-    main()
+def get_password(minimum_length):
+    """Get password, ensuring it meets the minimum_length requirement."""
+    password = input("Enter password of at least {} characters: ".format(minimum_length))
+    while len(password) < minimum_length:
+        print("Password too short")
+        password = input("Enter password of at least {} characters: ".format(minimum_length))
+    return password
+
+
+def print_asterisks(sequence):
+    """Print as many asterisks as there are characters in the passed-in sequence."""
+    print('*' * len(sequence))
+
+
+main()
